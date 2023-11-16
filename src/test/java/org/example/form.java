@@ -59,11 +59,11 @@ public class form {
 
         //Hobbies
         webdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        String hobby = webdriver.findElement(By.cssSelector("label[for='hobbies-checkbox-1']")).getText();
+        String hobby = webdriver.findElement(By.cssSelector("label[for='hobbies-checkbox-3']")).getText();
         webdriver.findElement(By.xpath("//*[@id=\"hobbiesWrapper\"]/div[2]/div[3]/label")).click();
 
         //Picture
-        webdriver.findElement(By.id("uploadPicture")).sendKeys("D:\\ddd.png");
+        webdriver.findElement(By.id("uploadPicture")).sendKeys("D:\\aaa.png");
 
         //Address
         WebElement address = webdriver.findElement(By.xpath("//textarea[@id='currentAddress']"));
@@ -79,16 +79,13 @@ public class form {
 
         //submit
         webdriver.findElement(By.xpath("//*[@id=\"submit\"]")).submit();
-//        Assert.assertEquals(hobby, driver.findElement(By.xpath("//tbody/tr[7]/td[2]")).getText());
+        Assert.assertEquals(hobby, webdriver.findElement(By.xpath("//tbody/tr[7]/td[2]")).getText());
 //        webdriver.quit();
-
-
-
     }
 
 
-//    @AfterClass
-//    public static void afterClass(){
-//        webdriver.close();
-//    }
+    @AfterClass
+    public static void afterClass(){
+        webdriver.close();
+    }
 }

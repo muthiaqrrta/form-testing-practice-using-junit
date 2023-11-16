@@ -80,7 +80,6 @@ public class form {
         //submit
         webdriver.findElement(By.xpath("//*[@id=\"submit\"]")).submit();
         Assert.assertEquals(hobby, webdriver.findElement(By.xpath("//tbody/tr[7]/td[2]")).getText());
-//        webdriver.quit();
     }
 
 

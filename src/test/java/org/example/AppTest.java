@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.Locale;
 
@@ -16,17 +17,16 @@ import java.util.Locale;
  */
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
-
     static WebDriver webdriver;
     String keyword;
 
     @BeforeClass
     public static void beforeClass(){
         System.setProperty("webdriver.chrome.driver", "D:\\Aplikasi\\chromedriver.exe");
-        webdriver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        options.addArguments("--remote-allow-origins=*");
+        webdriver = new ChromeDriver(options);
         webdriver.get("https://wikipedia.org");
     }
 
@@ -52,7 +52,7 @@ public class AppTest
         WebElement webElement = webdriver.findElement(By.xpath("//input[@id='searchInput']"));
         webElement.sendKeys(keyword);
 
-        webdriver.findElement(By.xpath("//input[@id='searchButton']")).click();
+        webdriver.findElement(By.xpath("//form[@id='searchform']//button")).click();
 
         WebElement pagetitle = webdriver.findElement(By.xpath("//*[@id=\"firstHeading\"]"));
         assertEquals("Page is not Banana", keyword, pagetitle.getText());
@@ -66,7 +66,7 @@ public class AppTest
         WebElement webElement = webdriver.findElement(By.xpath("//input[@id='searchInput']"));
         webElement.sendKeys(keyword);
 
-        webdriver.findElement(By.xpath("//input[@id='searchButton']")).click();
+        webdriver.findElement(By.xpath("//form[@id='searchform']//button")).click();
 
         WebElement pagetitle = webdriver.findElement(By.xpath("//*[@id=\"firstHeading\"]"));
         assertEquals("Page is not Kiwifruit", keyword, pagetitle.getText());

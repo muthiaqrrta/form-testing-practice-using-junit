@@ -137,6 +137,4 @@ public class AppTest
 //    public static void methodAfterClass(){
 //        System.out.println("Ini method AfterClass");
 //    }
-
-
 }

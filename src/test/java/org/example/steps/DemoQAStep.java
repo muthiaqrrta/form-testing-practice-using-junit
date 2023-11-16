@@ -23,7 +23,7 @@ public class DemoQAStep {
     String DOB = "2000 08 27";
     String subject = "Math";
     By hobby = By.xpath("//*[@id=\"hobbiesWrapper\"]/div[2]/div[3]/label");
-    String picture = "D:\\\\ddd.png";
+    String picture = "D:\\\\aaa.png";
     String address = "Surabaya";
     String stateText = "n";
     By stateSelect = By.xpath("//input[@id='react-select-3-input']");
@@ -33,7 +33,10 @@ public class DemoQAStep {
     @BeforeClass
     public static void beforeClass(){
         System.setProperty("webdriver.chrome.driver", "D:\\Aplikasi\\chromedriver.exe");
-        webdriver = new ChromeDriver();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("start-maximized");
+        options.addArguments("--remote-allow-origins=*");
+        webdriver = new ChromeDriver(options);
     }
 
     @Test
